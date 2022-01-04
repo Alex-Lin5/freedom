@@ -1,0 +1,2 @@
+sram_integration_tb/SRAMIntegrationTestBench.sv
+memories/design.behav_srams.v

@@ -1,0 +1,212 @@
+# Substitutions:
+#   TOP              = SiFive_CoreIPSubsystem
+#   IGNORE           = set_option ignorefile  ../../design/EICG.v
+
+
+set_option projectwdir .
+set_option language_mode mixed
+set_option designread_enable_synthesis no
+set_option designread_disable_flatten no
+set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option enableSV yes
+
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+set_option top SiFive_CoreIPSubsystem
+
+
+
+# parameters for W164a_a
+set_parameter check_natural_width_of_multiplication yes
+set_parameter nocheckoverflow no
+set_parameter check_static_value yes
+
+
+read_file -type sourcelist LINT.f
+read_file -type sgdc LINT.sgdc
+# read_file -type awl LINT.awl
+
+current_goal lint/lint_rtl -top SiFive_CoreIPSubsystem
+set_goal_option overloadrules  STARC-2.3.4.3+severity=Warning
+set_goal_option overloadrules  STARC-2.10.6.1+severity=Warning
+set_goal_option overloadrules  RegOutputs+severity=Warning
+
+# CIP-1338
+set_option mthresh 32768
+
+set_option ignorefile  ../../design/EICG.v
+
+# Lint-Mustfix
+##Active_Rules  CombLoop DisallowCaseX-ML DisallowXInCaseZ-ML DuplicateCaseLabel-ML ForLoopWait HangingInst-ML IncompleteType LoopBound MultipleWait NoSigCaseX-ML NoTimeOut NoXInCase-ML PortType ResetSynthCheck STARC-2.1.1.2 STARC-2.10.3.2a STARC-2.3.3.2 STARC-2.7.4.3 STARC-2.8.1.5 STARC-2.9.1.2a STARC-2.9.1.2d STARC05-2.1.4.5 STARC05-2.1.5.3 STARC05-2.2.3.1 STARC05-2.7.2.2 STARC05-3.2.4.3 SigVarInit W122 W156 W163 W164a W182c W188 W19 W210 W213 W215 W216 W218 W239 W245 W287c W289 W292 W293 W294 W314 W336 W343 W391 W395 W398 W414 W422 W423 W424 W426 W427 W428 W450L W456a W467 W479 W481a W481b W494 W502 W505 W66 WhileInSubProg bothedges sim_race02
+
+set_goal_option addrule W164a_a
+set_goal_option addrule CombLoop
+set_goal_option addrule DisallowCaseX-ML
+set_goal_option addrule DisallowXInCaseZ-ML
+set_goal_option addrule DuplicateCaseLabel-ML
+set_goal_option addrule ForLoopWait
+set_goal_option addrule HangingInst-ML
+set_goal_option addrule IncompleteType
+set_goal_option addrule LoopBound
+set_goal_option addrule MultipleWait
+set_goal_option addrule NoSigCaseX-ML
+set_goal_option addrule NoTimeOut
+set_goal_option addrule NoXInCase-ML
+set_goal_option addrule PortType
+set_goal_option addrule ResetSynthCheck
+set_goal_option addrule STARC-2.1.1.2
+set_goal_option addrule STARC-2.10.3.2a
+set_goal_option addrule STARC-2.3.3.2
+set_goal_option addrule STARC-2.7.4.3
+set_goal_option addrule STARC-2.8.1.5
+set_goal_option addrule STARC-2.9.1.2a
+set_goal_option addrule STARC-2.9.1.2d
+set_goal_option addrule STARC05-2.1.4.5
+set_goal_option addrule STARC05-2.1.5.3
+set_goal_option addrule STARC05-2.2.3.1
+set_goal_option addrule STARC05-2.7.2.2
+set_goal_option addrule STARC05-3.2.4.3
+set_goal_option addrule SigVarInit
+set_goal_option addrule W122
+set_goal_option addrule W156
+set_goal_option addrule W163
+set_goal_option addrule W164a
+set_goal_option addrule W182c
+set_goal_option addrule W188
+set_goal_option addrule W19
+set_goal_option addrule W210
+set_goal_option addrule W213
+set_goal_option addrule W215
+set_goal_option addrule W216
+set_goal_option addrule W218
+set_goal_option addrule W239
+set_goal_option addrule W245
+set_goal_option addrule W287c
+set_goal_option addrule W289
+set_goal_option addrule W292
+set_goal_option addrule W293
+set_goal_option addrule W294
+set_goal_option addrule W314
+set_goal_option addrule W336
+set_goal_option addrule W343
+set_goal_option addrule W391
+set_goal_option addrule W395
+set_goal_option addrule W398
+set_goal_option addrule W414
+set_goal_option addrule W422
+set_goal_option addrule W423
+set_goal_option addrule W424
+set_goal_option addrule W426
+set_goal_option addrule W427
+set_goal_option addrule W428
+set_goal_option addrule W450L
+set_goal_option addrule W456a
+set_goal_option addrule W467
+set_goal_option addrule W479
+set_goal_option addrule W481a
+set_goal_option addrule W481b
+set_goal_option addrule W494
+set_goal_option addrule W502
+set_goal_option addrule W505
+set_goal_option addrule W66
+set_goal_option addrule WhileInSubProg
+set_goal_option addrule bothedges
+set_goal_option addrule sim_race02
+
+# Lint-Mustfix
+##Active_Rules  HangingInstInput-ML LatchFeedback STARC-2.8.5.2 UndrivenInTerm-ML UndrivenOutPort-ML UndrivenOutTermNLoaded-ML W110 W123 W415 W443
+
+
+
+set_goal_option addrule HangingInstInput-ML
+set_goal_option addrule LatchFeedback
+set_goal_option addrule STARC-2.8.5.2
+set_goal_option addrule UndrivenInTerm-ML
+set_goal_option addrule UndrivenOutPort-ML
+set_goal_option addrule UndrivenOutTermNLoaded-ML
+set_goal_option addrule W110
+set_goal_option addrule W123
+set_goal_option addrule W415
+set_goal_option addrule W443
+
+
+
+# Lint-Reset
+##Active_Rules  NonConstReset-ML Reset_check07 Reset_sync02 STARC-2.3.4.3 W392
+
+
+set_goal_option addrule NonConstReset-ML
+#fatal          set_goal_option addrule Reset_check07
+#fatal          set_goal_option addrule Reset_sync02
+set_goal_option addrule STARC-2.3.4.3
+set_goal_option addrule W392
+
+
+# Lint-Review
+##Active_Rules  AllocExpr ArrayEnumIndex AsgnOverflow-ML BlockHeader BothPhase CheckParamSensList-ML ClockStyle DisconnSpec LatchGatedClock LinkagePort NoExprInPort-ML PreDefAttr RegOutputs ResFunction STARC-1.1.1.5 STARC-1.4.3.1a STARC-2.1.6.1 STARC-2.10.6.1 STARC-3.2.3.1 STARC02-2.4.1.4 STARC05-1.2.1.2 STARC05-2.1.3.1 STARC05-2.1.6.5 STARC05-2.10.2.3 STARC05-2.3.1.5b STARC05-2.3.1.6 STARC05-2.3.4.1v STARC05-2.3.4.2 STARC05-2.4.1.5 STARC05-2.5.1.2 STARC05-2.5.1.4 STARC05-2.5.1.7 STARC05-2.5.1.9 SynthIfStmt TristateSig-ML UseMuxBusses UserDefAttr W167 W182g W182h W182k W182n W189 W208 W226 W250 W317 W337 W339a W352 W416 W421 W425 W468 W486 W489 W491 W493 W496a W496b W499 W541 mixedsenselist
+
+
+set_goal_option addrule AllocExpr
+set_goal_option addrule ArrayEnumIndex
+set_goal_option addrule AsgnOverflow-ML
+set_goal_option addrule BlockHeader
+set_goal_option addrule BothPhase
+set_goal_option addrule CheckParamSensList-ML
+set_goal_option addrule ClockStyle
+set_goal_option addrule DisconnSpec
+set_goal_option addrule LatchGatedClock
+set_goal_option addrule LinkagePort
+set_goal_option addrule NoExprInPort-ML
+set_goal_option addrule PreDefAttr
+set_goal_option addrule RegOutputs
+set_goal_option addrule ResFunction
+set_goal_option addrule STARC-1.1.1.5
+set_goal_option addrule STARC-1.4.3.1a
+set_goal_option addrule STARC-2.1.6.1
+set_goal_option addrule STARC-2.10.6.1
+set_goal_option addrule STARC-3.2.3.1
+# Option '-addrules': Rules 'STARC02-2.4.1.4' and 'STARC05-2.4.1.4' can not run together. Rule 'STARC05-2.4.1.4', if enabled, will run in place of rule 'STARC02-2.4.1.4'
+# set_goal_option addrule STARC02-2.4.1.4
+set_goal_option addrule STARC05-1.2.1.2
+set_goal_option addrule STARC05-2.1.3.1
+set_goal_option addrule STARC05-2.1.6.5
+set_goal_option addrule STARC05-2.10.2.3
+set_goal_option addrule STARC05-2.3.1.5b
+set_goal_option addrule STARC05-2.3.1.6
+set_goal_option addrule STARC05-2.3.4.1v
+set_goal_option addrule STARC05-2.3.4.2
+set_goal_option addrule STARC05-2.4.1.5
+set_goal_option addrule STARC05-2.5.1.2
+set_goal_option addrule STARC05-2.5.1.4
+set_goal_option addrule STARC05-2.5.1.7
+set_goal_option addrule STARC05-2.5.1.9
+set_goal_option addrule SynthIfStmt
+set_goal_option addrule TristateSig-ML
+set_goal_option addrule UseMuxBusses
+set_goal_option addrule UserDefAttr
+set_goal_option addrule W167
+set_goal_option addrule W182g
+set_goal_option addrule W182h
+set_goal_option addrule W182k
+set_goal_option addrule W182n
+set_goal_option addrule W189
+set_goal_option addrule W208
+set_goal_option addrule W226
+set_goal_option addrule W250
+set_goal_option addrule W317
+set_goal_option addrule W337
+set_goal_option addrule W339a
+set_goal_option addrule W352
+set_goal_option addrule W416
+set_goal_option addrule W421
+set_goal_option addrule W425
+set_goal_option addrule W468
+set_goal_option addrule W486
+set_goal_option addrule W489
+set_goal_option addrule W491
+set_goal_option addrule W493
+set_goal_option addrule W496a
+set_goal_option addrule W496b
+set_goal_option addrule W499
+set_goal_option addrule W541
+set_goal_option addrule mixedsenselist

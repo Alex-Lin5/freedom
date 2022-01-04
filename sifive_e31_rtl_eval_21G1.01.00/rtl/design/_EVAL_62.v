@@ -1,0 +1,371 @@
+//
+// Copyright (c) 2016-2020 SiFive, Inc. -- Proprietary and Confidential
+// All Rights Reserved.
+//
+// NOTICE: All information contained herein is, and remains the
+// property of SiFive, Inc. The intellectual and technical concepts
+// contained herein are proprietary to SiFive, Inc. and may be covered
+// by U.S. and Foreign Patents, patents in process, and are protected by
+// trade secret or copyright law.
+//
+// This work may not be copied, modified, re-published, uploaded,
+// executed, or distributed in any way, in any medium, whether in whole
+// or in part, without prior written permission from SiFive, Inc.
+//
+// The copyright notice above does not evidence any actual or intended
+// publication or disclosure of this source code, which includes
+// information that is confidential and/or proprietary, and is a trade
+// secret, of SiFive, Inc.
+//
+// Instance ID: 3182346c-d10e-418d-aa89-6f3d35a9b6fb, 00000000-0000-0000-0000-000000000000, 00000000-0000-0000-0000-000000000000
+module _EVAL_62(
+  input  [2:0]  _EVAL,
+  input  [3:0]  _EVAL_0,
+  output [2:0]  _EVAL_1,
+  output        _EVAL_2,
+  input  [2:0]  _EVAL_3,
+  input  [4:0]  _EVAL_4,
+  output [27:0] _EVAL_5,
+  input         _EVAL_6,
+  input         _EVAL_7,
+  input         _EVAL_8,
+  input         _EVAL_9,
+  output [2:0]  _EVAL_10,
+  output [4:0]  _EVAL_11,
+  output [1:0]  _EVAL_12,
+  output        _EVAL_13,
+  output        _EVAL_14,
+  input  [27:0] _EVAL_15,
+  output [3:0]  _EVAL_16,
+  output [31:0] _EVAL_17,
+  output        _EVAL_18,
+  input  [31:0] _EVAL_19,
+  input  [31:0] _EVAL_20,
+  input         _EVAL_21,
+  input  [2:0]  _EVAL_22,
+  input  [1:0]  _EVAL_23,
+  input  [2:0]  _EVAL_24,
+  output [9:0]  _EVAL_25,
+  input         _EVAL_26,
+  input  [9:0]  _EVAL_27,
+  output [2:0]  _EVAL_28,
+  input         _EVAL_29,
+  output        _EVAL_30,
+  output [2:0]  _EVAL_31,
+  output [31:0] _EVAL_32
+);
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
+  reg [31:0] _RAND_3;
+  reg [31:0] _RAND_4;
+`endif // RANDOMIZE_REG_INIT
+  wire  _EVAL_33;
+  wire [4:0] _EVAL_35;
+  wire  _EVAL_36;
+  wire [5:0] _EVAL_37;
+  wire  _EVAL_38;
+  wire  _EVAL_39;
+  wire [3:0] _EVAL_40;
+  wire [5:0] _EVAL_44;
+  wire [4:0] _EVAL_45;
+  wire [6:0] _EVAL_46;
+  wire [6:0] _EVAL_48;
+  wire [2:0] _EVAL_49;
+  wire  _EVAL_50;
+  wire [1:0] _EVAL_51;
+  wire [6:0] _EVAL_53;
+  wire [4:0] _EVAL_54;
+  wire [3:0] _EVAL_55;
+  wire [5:0] _EVAL_56;
+  wire  _EVAL_57;
+  wire [3:0] _EVAL_58;
+  wire [1:0] _EVAL_59;
+  wire [3:0] _EVAL_60;
+  wire [12:0] _EVAL_61;
+  wire [5:0] _EVAL_62;
+  wire  _EVAL_63;
+  wire [1:0] _EVAL_64;
+  reg [3:0] _EVAL_67;
+  wire [3:0] _EVAL_68;
+  wire  _EVAL_69;
+  reg  _EVAL_70;
+  wire [3:0] _EVAL_71;
+  wire [1:0] _EVAL_72;
+  wire [1:0] _EVAL_73;
+  wire [3:0] _EVAL_74;
+  wire [5:0] _EVAL_75;
+  wire [27:0] _EVAL_76;
+  wire [2:0] _EVAL_77;
+  wire [3:0] _EVAL_78;
+  wire  _EVAL_79;
+  wire  _EVAL_80;
+  wire [3:0] _EVAL_82;
+  wire [5:0] _EVAL_84;
+  wire [3:0] _EVAL_85;
+  wire [2:0] _EVAL_86;
+  reg [2:0] _EVAL_87;
+  wire [5:0] _EVAL_88;
+  wire [6:0] _EVAL_89;
+  wire  _EVAL_90;
+  wire [5:0] _EVAL_91;
+  wire  _EVAL_92;
+  wire  _EVAL_93;
+  wire  _EVAL_95;
+  wire [1:0] _EVAL_96;
+  wire  _EVAL_97;
+  reg  _EVAL_98;
+  wire  _EVAL_100;
+  wire [5:0] _EVAL_101;
+  wire  _EVAL_102;
+  wire  _EVAL_103;
+  wire [5:0] _EVAL_104;
+  wire [6:0] _EVAL_105;
+  wire [2:0] repeater__EVAL;
+  wire  repeater__EVAL_0;
+  wire  repeater__EVAL_1;
+  wire [2:0] repeater__EVAL_2;
+  wire  repeater__EVAL_3;
+  wire [4:0] repeater__EVAL_4;
+  wire [3:0] repeater__EVAL_5;
+  wire  repeater__EVAL_6;
+  wire  repeater__EVAL_7;
+  wire [4:0] repeater__EVAL_8;
+  wire  repeater__EVAL_9;
+  wire  repeater__EVAL_10;
+  wire [2:0] repeater__EVAL_11;
+  wire [2:0] repeater__EVAL_12;
+  wire [2:0] repeater__EVAL_13;
+  wire  repeater__EVAL_14;
+  wire [2:0] repeater__EVAL_15;
+  wire [27:0] repeater__EVAL_16;
+  wire [27:0] repeater__EVAL_17;
+  wire [3:0] repeater__EVAL_18;
+  wire  repeater__EVAL_19;
+  wire  repeater__EVAL_20;
+  wire  _EVAL_106;
+  wire  _EVAL_107;
+  wire  _EVAL_108;
+  wire [8:0] _EVAL_109;
+  wire  _EVAL_110;
+  wire [5:0] _EVAL_111;
+  wire [1:0] _EVAL_112;
+  wire  _EVAL_113;
+  wire [3:0] _EVAL_114;
+  wire [5:0] _EVAL_117;
+  wire  _EVAL_118;
+  wire  _EVAL_119;
+  reg [3:0] _EVAL_120;
+  wire [3:0] _EVAL_121;
+  wire [2:0] _EVAL_122;
+  wire [5:0] _EVAL_123;
+  _EVAL_61 repeater (
+    ._EVAL(repeater__EVAL),
+    ._EVAL_0(repeater__EVAL_0),
+    ._EVAL_1(repeater__EVAL_1),
+    ._EVAL_2(repeater__EVAL_2),
+    ._EVAL_3(repeater__EVAL_3),
+    ._EVAL_4(repeater__EVAL_4),
+    ._EVAL_5(repeater__EVAL_5),
+    ._EVAL_6(repeater__EVAL_6),
+    ._EVAL_7(repeater__EVAL_7),
+    ._EVAL_8(repeater__EVAL_8),
+    ._EVAL_9(repeater__EVAL_9),
+    ._EVAL_10(repeater__EVAL_10),
+    ._EVAL_11(repeater__EVAL_11),
+    ._EVAL_12(repeater__EVAL_12),
+    ._EVAL_13(repeater__EVAL_13),
+    ._EVAL_14(repeater__EVAL_14),
+    ._EVAL_15(repeater__EVAL_15),
+    ._EVAL_16(repeater__EVAL_16),
+    ._EVAL_17(repeater__EVAL_17),
+    ._EVAL_18(repeater__EVAL_18),
+    ._EVAL_19(repeater__EVAL_19),
+    ._EVAL_20(repeater__EVAL_20)
+  );
+  assign _EVAL_114 = ~_EVAL_71;
+  assign _EVAL_54 = _EVAL_120 - 4'h1;
+  assign _EVAL_108 = _EVAL_86[2];
+  assign _EVAL_45 = 5'h3 << _EVAL_23;
+  assign _EVAL_53 = _EVAL_105 | 7'h1;
+  assign _EVAL_84 = ~_EVAL_101;
+  assign _EVAL_72 = _EVAL_109[1:0];
+  assign _EVAL_89 = ~_EVAL_48;
+  assign _EVAL_56 = _EVAL_61[5:0];
+  assign _EVAL_1 = _EVAL_22;
+  assign _EVAL_36 = ~_EVAL_38;
+  assign repeater__EVAL_14 = _EVAL_8;
+  assign _EVAL_62 = {{4'd0}, _EVAL_64};
+  assign _EVAL_14 = _EVAL_26 & _EVAL_107;
+  assign _EVAL_5 = repeater__EVAL_17 | _EVAL_76;
+  assign _EVAL_75 = {{4'd0}, _EVAL_112};
+  assign _EVAL_85 = _EVAL_27[3:0];
+  assign _EVAL_32 = _EVAL_19;
+  assign _EVAL_44 = _EVAL_91 | _EVAL_84;
+  assign _EVAL_88 = _EVAL_37 | _EVAL_62;
+  assign _EVAL_112 = ~_EVAL_72;
+  assign _EVAL_104 = {repeater__EVAL_8,_EVAL_33};
+  assign repeater__EVAL_19 = _EVAL_21;
+  assign _EVAL_39 = repeater__EVAL_2 > 3'h2;
+  assign _EVAL_71 = ~_EVAL_60;
+  assign _EVAL_68 = _EVAL_101[5:2];
+  assign _EVAL_109 = 9'h3 << _EVAL_77;
+  assign _EVAL_97 = _EVAL_6 | _EVAL_92;
+  assign _EVAL_28 = _EVAL_100 ? _EVAL_49 : _EVAL_87;
+  assign _EVAL_106 = _EVAL_97 & _EVAL_26;
+  assign repeater__EVAL_13 = _EVAL;
+  assign _EVAL_103 = _EVAL_73[1];
+  assign _EVAL_101 = ~_EVAL_56;
+  assign _EVAL_33 = ~_EVAL_79;
+  assign _EVAL_69 = |_EVAL_122;
+  assign _EVAL_40 = _EVAL_35[3:0];
+  assign _EVAL_17 = _EVAL_20;
+  assign _EVAL_76 = {{22'd0}, _EVAL_111};
+  assign _EVAL_18 = _EVAL_6 | _EVAL_92;
+  assign _EVAL_78 = 4'h1 << _EVAL_23;
+  assign _EVAL_79 = _EVAL_80 ? _EVAL_98 : _EVAL_70;
+  assign _EVAL_95 = _EVAL_27[4];
+  assign repeater__EVAL_9 = _EVAL_110 & _EVAL_90;
+  assign _EVAL_31 = repeater__EVAL_15;
+  assign _EVAL_49 = {_EVAL_69,_EVAL_50,_EVAL_103};
+  assign _EVAL_82 = _EVAL_46[3:0];
+  assign _EVAL_51 = _EVAL_74[3:2];
+  assign _EVAL_96 = _EVAL_74[1:0];
+  assign _EVAL_35 = _EVAL_67 - _EVAL_121;
+  assign _EVAL_74 = _EVAL_55 | _EVAL_82;
+  assign _EVAL_2 = repeater__EVAL_10;
+  assign _EVAL_123 = _EVAL_44 | _EVAL_75;
+  assign _EVAL_93 = ~_EVAL_119;
+  assign _EVAL_90 = _EVAL_114 != 4'h0;
+  assign _EVAL_61 = 13'h3f << repeater__EVAL_2;
+  assign _EVAL_107 = ~_EVAL_92;
+  assign _EVAL_92 = _EVAL_113 & _EVAL_36;
+  assign _EVAL_91 = {_EVAL_60, 2'h0};
+  assign _EVAL_55 = {{1'd0}, _EVAL_122};
+  assign _EVAL_110 = ~_EVAL_93;
+  assign _EVAL_86 = _EVAL_78[2:0];
+  assign _EVAL_10 = repeater__EVAL_12;
+  assign _EVAL_57 = _EVAL_118 | _EVAL_108;
+  assign _EVAL_30 = repeater__EVAL_3;
+  assign _EVAL_25 = {_EVAL_104,_EVAL_114};
+  assign _EVAL_73 = _EVAL_51 | _EVAL_96;
+  assign repeater__EVAL_16 = _EVAL_15;
+  assign _EVAL_105 = {_EVAL_88, 1'h0};
+  assign _EVAL_50 = |_EVAL_51;
+  assign _EVAL_16 = repeater__EVAL_7 ? 4'hf : _EVAL_0;
+  assign _EVAL_77 = _EVAL_39 ? 3'h2 : repeater__EVAL_2;
+  assign _EVAL_80 = _EVAL_120 == 4'h0;
+  assign _EVAL_60 = _EVAL_80 ? _EVAL_68 : _EVAL_58;
+  assign repeater__EVAL_0 = _EVAL_9;
+  assign _EVAL_48 = {1'h0,_EVAL_88};
+  assign _EVAL_119 = repeater__EVAL_15[2];
+  assign _EVAL_100 = _EVAL_67 == 4'h0;
+  assign _EVAL_111 = ~_EVAL_117;
+  assign _EVAL_59 = _EVAL_45[1:0];
+  assign repeater__EVAL_11 = _EVAL_24;
+  assign _EVAL_37 = {_EVAL_85, 2'h0};
+  assign repeater__EVAL = _EVAL_3;
+  assign _EVAL_63 = repeater__EVAL_3;
+  assign repeater__EVAL_6 = _EVAL_29;
+  assign repeater__EVAL_5 = _EVAL_0;
+  assign _EVAL_13 = repeater__EVAL_1;
+  assign repeater__EVAL_20 = _EVAL_7;
+  assign _EVAL_38 = _EVAL_85 == 4'h0;
+  assign _EVAL_12 = _EVAL_77[1:0];
+  assign _EVAL_46 = _EVAL_53 & _EVAL_89;
+  assign repeater__EVAL_4 = _EVAL_4;
+  assign _EVAL_102 = _EVAL_8 & _EVAL_63;
+  assign _EVAL_113 = ~_EVAL_118;
+  assign _EVAL_117 = _EVAL_123 | 6'h3;
+  assign _EVAL_11 = _EVAL_27[9:5];
+  assign _EVAL_121 = {{3'd0}, _EVAL_57};
+  assign _EVAL_122 = _EVAL_46[6:4];
+  assign _EVAL_118 = _EVAL_22[0];
+  assign _EVAL_64 = ~_EVAL_59;
+  assign _EVAL_58 = _EVAL_54[3:0];
+  always @(posedge _EVAL_7) begin
+    if (_EVAL_9) begin
+      _EVAL_67 <= 4'h0;
+    end else if (_EVAL_106) begin
+      if (_EVAL_100) begin
+        _EVAL_67 <= _EVAL_85;
+      end else begin
+        _EVAL_67 <= _EVAL_40;
+      end
+    end
+    if (_EVAL_80) begin
+      _EVAL_70 <= _EVAL_98;
+    end
+    if (_EVAL_106) begin
+      if (_EVAL_100) begin
+        _EVAL_87 <= _EVAL_49;
+      end
+    end
+    if (_EVAL_9) begin
+      _EVAL_98 <= 1'h0;
+    end else if (_EVAL_106) begin
+      if (_EVAL_100) begin
+        _EVAL_98 <= _EVAL_95;
+      end
+    end
+    if (_EVAL_9) begin
+      _EVAL_120 <= 4'h0;
+    end else if (_EVAL_102) begin
+      _EVAL_120 <= _EVAL_114;
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  _EVAL_67 = _RAND_0[3:0];
+  _RAND_1 = {1{`RANDOM}};
+  _EVAL_70 = _RAND_1[0:0];
+  _RAND_2 = {1{`RANDOM}};
+  _EVAL_87 = _RAND_2[2:0];
+  _RAND_3 = {1{`RANDOM}};
+  _EVAL_98 = _RAND_3[0:0];
+  _RAND_4 = {1{`RANDOM}};
+  _EVAL_120 = _RAND_4[3:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
+endmodule

@@ -1,0 +1,30 @@
+#INFO this sgdc is generated based on koala method
+
+current_design "SiFive_CoreIPSubsystem"
+
+
+#CLOCKS
+clock -name clock                                -period 10 -testclock
+clock -name debug_clock                          -period 10 -testclock
+clock -name external_source_for_core_0_clock     -period 10 -testclock
+clock -name debug_systemjtag_jtag_TCK            -period 10 -testclock
+
+
+#RESETS
+
+
+# debug_psd_test_mode_reset or psd_psd_test_mode_reset must be specified for DFT check
+reset -name debug_reset                         -value 1
+test_mode -name debug_reset                         -value 0 -scanshift
+reset -name debug_systemjtag_reset              -value 1
+test_mode -name debug_systemjtag_reset              -value 0 -scanshift
+reset -name external_source_for_core_0_reset    -value 1
+test_mode -name external_source_for_core_0_reset    -value 0 -scanshift
+reset -name reset                               -value 1
+test_mode -name reset                               -value 0 -scanshift
+
+
+#extra test mode setting 
+test_mode -name psd_test_clock_enable               -value 1
+
+# clock_shaper constraints

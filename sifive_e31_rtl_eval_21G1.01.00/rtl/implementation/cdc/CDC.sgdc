@@ -1,0 +1,92 @@
+#INFO this sgdc is generated based on koala method
+
+current_design "SiFive_CoreIPSubsystem"
+
+
+#CLOCKS
+clock -name clock                                -domain d_0                                  
+clock -name debug_clock                          -domain d_0                                  
+clock -name external_source_for_core_0_clock     -domain d_0                                  
+clock -name debug_systemjtag_jtag_TCK            -domain d_1                                  
+# discovered_clocks - clock, debug_clock, debug_systemjtag_jtag_TCK, external_source_for_core_0_clock
+
+#RESETS
+reset        -name debug_reset                         -value 1
+reset        -name debug_systemjtag_reset              -value 1
+reset        -name external_source_for_core_0_reset    -value 1
+reset        -name reset                               -value 1
+
+set_case_analysis -name psd_test_clock_enable -value 0
+set_case_analysis -name nmi_0_rnmi_exception_vector -value 0
+set_case_analysis -name nmi_0_rnmi_interrupt_vector -value 0
+
+
+#PORTS
+# clock is a clock and should not be listed
+# debug_clock is a clock and should not be listed
+# input ports directly connected to a synchronizer
+abstract_port -ports debug_dmactiveAck -clock V_CLK_8175 -combo no
+input   -clock debug_clock                         -name debug_reset                        
+# debug_systemjtag_jtag_TCK is a clock and should not be listed
+input   -clock debug_systemjtag_jtag_TCK           -name debug_systemjtag_jtag_TDI          
+input   -clock debug_systemjtag_jtag_TCK           -name debug_systemjtag_jtag_TMS          
+input   -clock debug_systemjtag_jtag_TCK           -name debug_systemjtag_mfr_id            
+input   -clock debug_systemjtag_jtag_TCK           -name debug_systemjtag_part_number       
+input   -clock debug_systemjtag_jtag_TCK           -name debug_systemjtag_reset             
+input   -clock debug_systemjtag_jtag_TCK           -name debug_systemjtag_version           
+# external_source_for_core_0_clock is a clock and should not be listed
+input   -clock external_source_for_core_0_clock    -name external_source_for_core_0_reset   
+input   -clock clock                               -name front_port_ahb_0_haddr             
+input   -clock clock                               -name front_port_ahb_0_hburst            
+input   -clock clock                               -name front_port_ahb_0_hmastlock         
+input   -clock clock                               -name front_port_ahb_0_hprot             
+input   -clock clock                               -name front_port_ahb_0_hready            
+input   -clock clock                               -name front_port_ahb_0_hsel              
+input   -clock clock                               -name front_port_ahb_0_hsize             
+input   -clock clock                               -name front_port_ahb_0_htrans            
+input   -clock clock                               -name front_port_ahb_0_hwdata            
+input   -clock clock                               -name front_port_ahb_0_hwrite            
+input   -clock clock                               -name global_interrupts                  
+input   -clock external_source_for_core_0_clock    -name local_interrupts_0                 
+input   -clock external_source_for_core_0_clock    -name nmi_0_rnmi                         
+# nmi_0_rnmi_exception_vector is specified in set_case_analysis - shouldn't be listed
+# nmi_0_rnmi_interrupt_vector is specified in set_case_analysis - shouldn't be listed
+input   -clock clock                               -name periph_port_ahb_0_hrdata           
+input   -clock clock                               -name periph_port_ahb_0_hready           
+input   -clock clock                               -name periph_port_ahb_0_hresp            
+# psd_test_clock_enable is specified in set_case_analysis - shouldn't be listed
+input   -clock clock                               -name reset                              
+input   -clock external_source_for_core_0_clock    -name reset_vector_0                     
+input   -clock external_source_for_core_0_clock    -name resetctrl_hartIsInReset_0          
+# input ports directly connected to a synchronizer
+abstract_port -ports rtc_toggle -clock V_CLK_5352 -combo no
+input   -clock clock                               -name sys_port_ahb_0_hrdata              
+input   -clock clock                               -name sys_port_ahb_0_hready              
+input   -clock clock                               -name sys_port_ahb_0_hresp               
+output   -clock external_source_for_core_0_clock    -name cease_from_tile_0                  
+output   -clock debug_systemjtag_jtag_TCK           -name debug_dmactive                     
+output   -clock external_source_for_core_0_clock    -name debug_from_tile_0                  
+output   -clock debug_systemjtag_jtag_TCK           -name debug_ndreset                      
+output   -clock debug_systemjtag_jtag_TCK           -name debug_systemjtag_jtag_TDO_data     
+output   -clock debug_systemjtag_jtag_TCK           -name debug_systemjtag_jtag_TDO_driven   
+output   -clock clock                               -name front_port_ahb_0_hrdata            
+output   -clock clock                               -name front_port_ahb_0_hreadyout         
+output   -clock clock                               -name front_port_ahb_0_hresp             
+output   -clock external_source_for_core_0_clock    -name halt_from_tile_0                   
+output   -clock clock                               -name periph_port_ahb_0_haddr            
+output   -clock clock                               -name periph_port_ahb_0_hburst           
+output   -clock clock                               -name periph_port_ahb_0_hmastlock        
+output   -clock clock                               -name periph_port_ahb_0_hprot            
+output   -clock clock                               -name periph_port_ahb_0_hsize            
+output   -clock clock                               -name periph_port_ahb_0_htrans           
+output   -clock clock                               -name periph_port_ahb_0_hwdata           
+output   -clock clock                               -name periph_port_ahb_0_hwrite           
+output   -clock clock                               -name sys_port_ahb_0_haddr               
+output   -clock clock                               -name sys_port_ahb_0_hburst              
+output   -clock clock                               -name sys_port_ahb_0_hmastlock           
+output   -clock clock                               -name sys_port_ahb_0_hprot               
+output   -clock clock                               -name sys_port_ahb_0_hsize               
+output   -clock clock                               -name sys_port_ahb_0_htrans              
+output   -clock clock                               -name sys_port_ahb_0_hwdata              
+output   -clock clock                               -name sys_port_ahb_0_hwrite              
+output   -clock external_source_for_core_0_clock    -name wfi_from_tile_0                    

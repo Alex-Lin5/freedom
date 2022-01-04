@@ -1,0 +1,6 @@
+# list of time-0 force deposits (value will be replaced by any other driver)
+# example:
+#   force -deposit TestDriver.testHarness.system.tile_prci_domain.tile.core.x_pc_reset 0
+
+# proceed with simulation
+run

@@ -1,0 +1,43 @@
+# Substitutions:
+#   TOP              = SiFive_CoreIPSubsystem
+#   IGNORE           = #  no ingorefile e.g., SiFive_syssram0.v found
+#   SYNC             = 
+
+set_option projectwdir .
+set_option language_mode mixed
+set_option designread_enable_synthesis no
+set_option designread_disable_flatten no
+set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option enableSV yes
+set_parameter use_inferred_resets yes
+
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+set_option top SiFive_CoreIPSubsystem
+
+read_file -type sourcelist CDC.f
+read_file -type sgdc CDC.sgdc
+# read_file -type awl CDC.awl
+
+# the following takes care of Reset_sync02 error/warnings (about 8 of them)
+# example: Reset signal 'fbnorth2_hmcu_v2p8_Logic.debug_1.dmOuter.AsyncQueueSource.AsyncValidSync.source_valid.sync_0.reg_0_rst' used to reset signal 'fbnorth2_hmcu_v2p8_Logic.debug_1.dmOuter.AsyncQueueSource.AsyncValidSync.source_valid.sync_0.reg_0_q' (domain 'fbnorth2_hmcu_v2p8_Logic.debug_apb_clock') is generated from domain 'fbnorth2_hmcu_v2p8_Logic.clock'
+#set_parameter reset_synchronize_cells "*_AsyncResetSynchronizerShiftReg_w1_d*"
+
+# llama
+set_parameter sync_reset yes
+
+# this is set to Warning by QC
+current_goal cdc/cdc_verify_struct
+set_goal_option overloadrules  Clock_info03b+severity=Warning
+set_goal_option addrule Reset_check10
+#This is for Ac_glitc03: if one part of comb logic prior to a sync comes from the same source
+#as the destination (e.g., c1 and c2  reaching to c2), tool does not flag error by default
+#set_parameter glitch_on_sync_src yes
+#set_goal_option overloadrules  Ac_conv01+severity=Error
+#This is for Ac_conv01 (default 0) -- determines how deep the tool wants to see the converage after sync
+#set_parameter conv_sync_seq_depth 2
+
+# CIP-1338
+set_option mthresh 32768
+
+#  no ingorefile e.g., SiFive_syssram0.v found
