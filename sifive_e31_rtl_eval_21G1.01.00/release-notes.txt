@@ -1,0 +1,226 @@
+Core IP E31 Deliverable Notes
+Build ID: 3182346c-d10e-418d-aa89-6f3d35a9b6fb, 00000000-0000-0000-0000-000000000000, 00000000-0000-0000-0000-000000000000
+Deliverable Version: 21G1.01.00
+Generator Version: 21G1.01.00
+Build Date: 2021-03-21
+
+Description:
+    This is an evaluation release comprised of obfuscated RTL with a limited address range. 
+    It can be used to synthesize the design, as well as execute software using the included RTL testbench and FPGA bitstream.
+    Note that the included SpyGlass LINT/CDC/DFT checks, as well as some of the included software tests, may fail due to restrictions of the evaluation deliverable.
+
+Configuration Change Log:
+For 21G1.01.00
+    * No functional changes
+For llama.00.00-preview
+    * Added support for driving AMBA PROT/CACHE signals.
+For 20G1.07.00
+    * No functional changes
+For 20G1.06.00
+    * No functional changes
+For 20G1.05.00
+    * Fixed multiple issues with format and syntax of IP-XACT file
+    * Fixed an issue in which the SystemC model would trigger a simulation assertion when accessing an address above 0xffffff
+    * Fixed an issue in which accesses using the Debug Module’s System Bus Access (SBA) could erroneously access illegal addresses when a block read starts at a legal address and extends into an illegal range
+For 20G1.04.00
+    * No functional changes - errata addressed by this update release do not impact this core configuration
+For 20G1.03.00
+    * No functional changes
+For koala.02.00-preview
+    * No functional changes
+For koala.01.00-preview
+    * No functional changes
+For koala.00.00-preview
+    * Changed clock, reset, and logic I/O ports associated with debug
+For v19.08p3p0
+    * Fixed issue in which `mcause` values did not reset to 0 after reset
+    * Added the "Disable Speculative I$ Refill" bit to the Feature Disable CSR to partially mitigate undesired speculative accesses to the Memory Port
+    * Fixed issue in which unused logic in asynchronous crossings (as found in the Debug connection to the core) would cause CDC lint warnings
+    * Fixed issue in which WFI did not gate the clock if the following instruction was a memory access
+    * Fixed issue in which performance counters set to count both exceptions and other retirement events only counted the exceptions
+    * Various documentation fixes and improvements
+For v19.08p2p0
+    * Fixed erratum in which the TDO pin may remain driven after reset
+For v19.08p1p0
+    * Fixed erratum in which Debug.SBCS had incorrect reset value for SBACCESS
+    * Fixed typos and other minor documentation errors
+For v19.08p0
+    * The Debug Module memory region is no longer accessible in M-mode
+For v19.05p2
+    * Fix for errata on 3-series cores with L1 data caches or L2 caches in which CFLUSH.D.L1 followed by a load that is nack'd could cause core lockup
+For v19.05p1
+    * SiFive Insight is enabled
+    * Use AHB-Lite for external ports
+    * Enable debugger reads of Debug Module registers when periphery is in reset
+    * Fix errata to get illegal instruction exception executing DRET outside of debug mode
+For v19.05
+    * v19.05 release of the E31 Standard Core. No functional changes.
+For v19.02
+    * Changed the date based release numbering system
+    * SiFive Insight [enabled]
+    * WFI-based clock-gating [enabled]
+For v2p1
+    * Corrected Clint base address in the Clint chapter
+For v2p0
+    * Updated E31 Core Complex definition; 4 hw breakpoints and 127 Global interrupts.
+    * Moved Interface and Debug Interface chapters to User Guide.
+For v1p2
+    * Core Complex branding
+    * Added references
+    * Updated interrupt chapter
+For v1p1
+    * Updated text descriptions
+    * Updated register and memory map tables for consistency
+For v1p0
+    * Initial release
+    * Describes the functionality of the SiFive E31 Core Complex
+
+Core IP Generator Change Log:
+For 21G1.01.00
+    New Core IP features and deliverables changes over 20G1 release
+    * Added the DebugDriver, a collection of Verilog tasks, that perform low-level debugging functions.
+    * Added debug_from_tile_X outputs to notify external logic when each core is in debug mode.
+    * Added support for driving AMBA PROT/CACHE signals for E/S-series cores with supervisor-mode capability.
+    * Added the Branch History Mode option for Nexus trace. This option results in better trace compression but uses more logic.
+    * Added memory-latency test for L1/TIM/L2/DLS/Memory/System/Peripheral ports.
+    * Added support for instrumented print's in simulation logs.
+    * Added asynchronous and full-asynchronous reset options to 3- and 5-series cores.
+    * Added PKA which provides basic modular operations to efficiently implement public key based algorithms (e.g. ECDSA).
+    * Added the option for a Public-Key-Based authentication protocol for enabling debug.
+    * Added the Pin Interface Block (PIB) option to send Nexus trace data off-chip to a trace probe.
+    * Added the option for the core complex configuration to include more than one trace sink type, selected by software at run-time.
+    * Made base address of debug module configurable. The design will use slightly more silicon area when the debug module is not based at zero.
+    * Made SBus width configurable. Increasing the width of this bus can help increase bandwidth and lower latency for cores with L2 Caches.
+    * Made the number of AXI ID bits configurable for AXI System, Memory and Front Ports.
+    * Integrated SystemC Debug Notification with Freedom Studio.
+    * Changed debug authentication password from pre-specified value to external inputs.
+    * Changed BEU local interrupt to use resumable NMI.
+    * Replaced extraction options with a port-punching option for SRAMs and clock gates.
+    
+    Top-Level Port Changes
+    * For new and updated top-level signal name changes, visit the following KB article https://sifive.atlassian.net/servicedesk/customer/portal/47/article/1538719943 
+
+Note: This version should not be used for tapeout without declaration of usage to SiFive.
+
+Top-level Synthesizable Module Name:
+    SiFive_CoreIPSubsystem. The verilog modules are located in the rtl/ directory.
+
+Top-level Ports:
+    See the Interfaces chapter in the user_guide.pdf located in the docs/ directory.
+    ===============================================================================
+    | Function                         | Signal Name                      | Width |
+    ===============================================================================
+    | Default Clock                    | clock                            |       |
+    | Default Reset                    | reset                            |       |
+    | Core Clock                       | external_source_for_core_0_clock |       |
+    | Asynchronous Reset Signal        | external_source_for_core_0_reset |       |
+    | Halt Notification                | halt_from_tile_0                 |       |
+    | WFI Notification                 | wfi_from_tile_0                  |       |
+    | Cease Signal                     | cease_from_tile_0                |       |
+    | Debug Mode Notification          | debug_from_tile_0                |       |
+    | Post-silicon Clock Enable        | psd_test_clock_enable            |       |
+    | Hart Reset Status                | resetctrl_hartIsInReset_0        |       |
+    | Debug Clock                      | debug_clock                      |       |
+    | Debug Reset                      | debug_reset                      |       |
+    | JTAG Debug                       | debug_systemjtag_*               |       |
+    | Debug Reset                      | debug_ndreset                    |       |
+    | Debug Logic Active               | debug_dmactive                   |       |
+    | Debug Logic Active               | debug_dmactiveAck                |       |
+    | Reset Vector Address             | reset_vector_0                   |   32b |
+    | Resumable Non-Maskable Interrupt | nmi_0_rnmi*                      |       |
+    | Real-time Clock Data Signal      | rtc_toggle                       |       |
+    | Global Interrupts                | global_interrupts                |  127b |
+    | Core Local Interrupts            | local_interrupts_0               |   16b |
+    | System Port (AHB)                | sys_port_ahb_0_*                 |   32b |
+    | Peripheral Port (AHB)            | periph_port_ahb_0_*              |   32b |
+    | Front Port (AHB)                 | front_port_ahb_0_*               |   32b |
+    ===============================================================================
+
+Generated Address Map:
+    See the Memory Map chapter in the manual.pdf located in the docs/ directory.
+           0 -       1000 RWX A debug-controller@0 control              
+        3000 -       4000 RWX A error-device@3000                       
+        4000 -       5000 RW  A teststatus@4000 control                 
+     1800000 -    1802000 RWX A itim@1800000 mem                        
+     1802000 -    1804000 RWX A itim@1800000 control                    
+     2000000 -    2010000 RW  A clint@2000000 control                   
+     c000000 -    c400000 RW  A interrupt-controller@c000000 control    
+    20000000 -   20002000 RWX A ahb-periph-port@20000000                
+    40000000 -   40002000 RWX   ahb-sys-port@40000000                   
+    80000000 -   80004000 RWX A dtim@80000000 mem                       
+
+High-level Directory Structure:
+    .
+    |-- Makefile
+    |-- arty_a7_100t-sifive
+    |   |-- design-arty.bit
+    |   `-- design-arty.mcs
+    |-- docs
+    |   |-- core_complex_configuration.txt
+    |   |-- manual.pdf
+    |   `-- user_guide.pdf
+    |-- freedom-e-sdk
+    |   |-- Makefile
+    |   |-- bsp
+    |   |   |-- design-arty
+    |   |   |   `-- design.dts
+    |   |   |-- design-rtl
+    |   |   |   `-- design.dts
+    |   |   `-- design-vcu118
+    |   |       `-- design.dts
+    |   |-- freedom-devicetree-tools
+    |   |-- freedom-metal
+    |   `-- software
+    |       |-- cflush
+    |       |   `-- release
+    |       |       `-- cflush.hex
+    |       |-- csr
+    |       |   `-- release
+    |       |       `-- csr.hex
+    |       |-- empty
+    |       |   `-- release
+    |       |       `-- empty.hex
+    |       |-- hello
+    |       |   `-- release
+    |       |       `-- hello.hex
+    |       |-- itim
+    |       |   `-- release
+    |       |       `-- itim.hex
+    |       |-- minimal-boot
+    |       |   `-- release
+    |       |       `-- minimal-boot.hex
+    |       |-- return-pass
+    |       |   `-- release
+    |       |       `-- return-pass.hex
+    |       |-- software-interrupt
+    |       |   `-- release
+    |       |       `-- software-interrupt.hex
+    |       `-- timer-interrupt
+    |           `-- release
+    |               `-- timer-interrupt.hex
+    |-- info
+    |   |-- mems.conf
+    |   `-- sifive_scope.yml
+    |-- rtl
+    |   |-- design
+    |   |   `-- SiFive_CoreIPSubsystem.v
+    |   |-- memories
+    |   |   |-- design.behav_srams.v
+    |   |   `-- design.roms.v
+    |   |-- sifive_scope
+    |   |-- sram_integration_tb
+    |   |   `-- SRAMIntegrationTestBench.sv
+    |   `-- testbench
+    |-- src
+    |   `-- verilator-main.cpp
+    `-- vcu118-sifive
+        |-- design-vcu118.bit
+        |-- design-vcu118_primary.mcs
+        `-- design-vcu118_secondary.mcs
+
+
+Getting Started:
+    See the docs/user_guide.pdf for more information about the integration and implementation of the core into a System-on-Chip design environment.
+    To learn more about the core functionality, see the docs/manual.pdf.
+
+For documentation on all applicable errata, or for additional support questions, please contact the SiFive Customer Service Desk at support@sifive.com
